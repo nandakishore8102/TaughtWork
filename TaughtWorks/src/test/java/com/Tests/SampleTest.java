@@ -1,0 +1,29 @@
+package com.Tests;
+
+import com.Pages.HomePage;
+import com.Utils.BaseClass;
+import com.Utils.NewUser;
+import org.testng.annotations.Test;
+
+public class SampleTest extends BaseClass {
+
+    @Test
+    public void SignInTest() {
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignIn().enterCredentials("test@thoughtworks.com", "password")
+                .validateMyAccoutPage();
+    }
+
+    @Test
+    public void SignInTestForResponsive() {
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignIn().enterCredentials("test@thoughtworks.com", "password")
+                .validateMyAccoutPageForResponsive();
+    }
+
+    @Test
+    public void RegistrationTest() {
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignIn().enterEmailToRegister("thoughtworks@tw1.com").registerUser(new NewUser());
+    }
+}
